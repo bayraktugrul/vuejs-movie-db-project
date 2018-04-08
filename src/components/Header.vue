@@ -1,29 +1,16 @@
 <template>
 <div id="app">
-  <header>
 
-    <nav v-bind:class='{black:scrolled}'>
-      <div class="menu-icon">
-        <a href="#">Menu</a>
-      </div>
 
-      <div class="logo">
-        DizyFilm.com
-      </div>
-
-      <div class="menu">
-        <ul>
-          <li><a href="#">Ana Sayfa</a></li>
-          <li><a href="#">Filmler</a></li>
-          <li><a href="#">Diziler</a></li>
-          <li><a href="#">Haberler</a></li>
-          <li><a href="#">En İyiler</a></li>
-          <li><a href="#">Hakkımızda</a></li>
-        </ul>
-      </div>
-    </nav>
-
-  </header>
+  <ul>
+    <img src="https://www.iparts.pl/gfx/iparts/pl/warsztaty/zdjecia/644/s232392741.png" alt="">
+    <li><a href="#">Ana Sayfa</a></li>
+    <li><a href="#">Filmler</a></li>
+    <li><a href="#">Diziler</a></li>
+    <li><a href="#">Haberler</a></li>
+    <li><a href="#">En İyiler</a></li>
+    <li><a href="#">Hakkımızda</a></li>
+  </ul>
 
 </div>
 </template>
@@ -51,117 +38,41 @@ export default {
 </script>
 
 <style scoped>
-header {
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 500;
-  text-transform: uppercase;
-  width: 100%;
-  height: 100px;
-  background-size: cover;
-}
 
-.content {
-  width: 94%;
-  margin: 4em auto;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: justify;
-}
-
-.logo {
-  line-height: 60px;
+#app {
   position: fixed;
-  float: left;
-  margin: 16px 46px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  letter-spacing: 2px;
-}
-
-nav {
-  position: fixed;
+  display: block;
   width: 100%;
-  line-height: 60px;
+  z-index: 9999;
 }
-
-nav ul {
-  line-height: 60px;
-  list-style: none;
-  background: rgba(0, 0, 0, 0);
-  overflow: hidden;
-  color: #fff;
-  padding: 0;
-  text-align: right;
+ul {
+  list-style-type: none;
   margin: 0;
-  padding-right: 40px;
-  transition: 1s;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffd300;
 }
 
-nav.black ul {
-  background: #000;
+li,img {
+  float: left;
+  margin: 5px;
 }
 
-nav ul li {
-  display: inline-block;
-  padding: 16px 40px;
-  ;
-}
 
-nav ul li a {
+li a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: block;
+  color: #231F20;
+  text-align: center;
+  padding: 30px 20px;
   text-decoration: none;
-  color: #fff;
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.menu-icon {
-  line-height: 60px;
-  width: 100%;
-  background: #000;
-  text-align: right;
-  box-sizing: border-box;
-  padding: 15px 24px;
-  cursor: pointer;
-  color: #fff;
-  display: none;
-}
+/* Change the link color to #111 (black) on hover */
 
-p,
-h {
-  color: white;
-}
-
-@media(max-width: 786px) {
-
-  .logo {
-    position: fixed;
-    top: 0;
-    margin-top: 16px;
-  }
-
-  nav ul {
-    max-height: 0px;
-    background: #000;
-  }
-
-  nav.black ul {
-    background-color: #000;
-  }
-
-  .showing {
-    max-height: 34em;
-  }
-
-  nav ul li {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 24px;
-    text-align: center;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-
+li a:hover {
+  background-color: #FFC107;
 }
 </style>

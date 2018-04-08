@@ -1,11 +1,11 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueParticles from 'vue-particles'
+import VueCarousel from 'vue-carousel'
 import App from './App'
 import router from './router'
 
-Vue.use(VueParticles)
+Vue.use(VueCarousel)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

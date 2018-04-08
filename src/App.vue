@@ -14,7 +14,7 @@ export default {
 <style >
 body {
   height: 100%;
-  background: url("assets/bg.jpg") no-repeat center center fixed;
+  background: #212121;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
