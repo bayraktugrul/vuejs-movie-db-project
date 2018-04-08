@@ -1,37 +1,6 @@
 <template>
 <div id="app">
-
-  <!--<carousel :loop="true" :autoplay="true" :autoplayTimeout="4000" :per-page="1" :navigationEnabled="false" :paginationEnabled="false">
-    <slide>
-      <div class="gradient">
-        <img src="https://wallpapersite.com/images/pages/pic_w/3852.jpg" alt="">
-        <h2 class="imgtext">Haber yazısı burada yer alacak!!</h2>
-      </div>
-
-    </slide>
-    <slide>
-      <div class="gradient">
-        <img src="https://wallpaperscraft.com/image/need_for_speed_2014_aaron_paul_tobey_marshall_dino_brewster_dominic_cooper_imogen_poots_julia_maddon_93024_1680x1050.jpg" alt="">
-        <h2 class="imgtext">Haber yazısı burada yer alacak!!</h2>
-      </div>
-    </slide>
-    <slide>
-      <div class="gradient">
-        <img src="https://wallpaperscraft.com/image/hitman_agent_47_rupert_friend_art_104224_3840x2160.jpg" alt="">
-        <h2 class="imgtext">Haber yazısı burada yer alacak!!</h2>
-      </div>
-    </slide>
-    <slide>
-      <div class="gradient">
-        <img src="https://wallpaperscraft.com/image/harry_potter_and_the_deathly_hallows_severus_snape_alan_rickman_96164_1920x1200.jpg" alt="">
-        <h2 class="imgtext">Haber yazısı burada yer alacak!!</h2>
-      </div>
-    </slide>
-  </carousel>
-  -->
-
-
-    <b-carousel  id="carousel1"
+    <b-carousel   id="carousel1"
                   style="text-shadow: 1px 1px 2px #333;"
                   controls
                   indicators
@@ -43,23 +12,23 @@
       >
       <div class="gradient">
         <!-- Text slides with image -->
-        <b-carousel-slide caption="First slide"
+        <b-carousel-slide  caption="First slide"
                           text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                          img-src="https://lorempixel.com/1024/480/technics/2/"
+                          img-src="https://www.hdwallpapers.in/walls/pirates_of_the_caribbean_dead_men_tell_no_tales_4k-wide.jpg"
         ></b-carousel-slide>
 
         <b-carousel-slide caption="First slide"
                           text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                          img-src="https://lorempixel.com/1024/480/technics/4/"
+                          img-src="https://www.hdwallpapers.in/walls/bob_odenkirk_better_call_saul_4k-wide.jpg"
         ></b-carousel-slide>
         <!-- Slides with image only -->
-        <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/8/">
+        <b-carousel-slide img-src="https://www.hdwallpapers.in/walls/logan_hugh_jackman-wide.jpg">
         </b-carousel-slide>
         <!-- Slides with custom text -->
         <!-- Text slides with image -->
         <b-carousel-slide caption="First slide"
                           text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                          img-src="https://lorempixel.com/1024/480/technics/2/"
+                          img-src="https://www.hdwallpapers.in/walls/la_la_land_5k-HD.jpg"
         ></b-carousel-slide>
 
       </div>
@@ -115,19 +84,20 @@ export default {
 
 #carousel1 {
   width: 100%;
-  height: 550px;
+  height: 400px;
   overflow: hidden;
-
+object-fit: fill;
 }
 
 #carousel1, b-carousel-slide {
   display:block !important;
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 400px;
 
 
   }
+
 
 /*
 h2{
