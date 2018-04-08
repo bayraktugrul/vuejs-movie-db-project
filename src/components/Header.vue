@@ -1,16 +1,40 @@
 <template>
 <div id="app">
 
-
-  <ul>
-    <img src="https://www.iparts.pl/gfx/iparts/pl/warsztaty/zdjecia/644/s232392741.png" alt="">
-    <li><a href="#">Ana Sayfa</a></li>
-    <li><a href="#">Filmler</a></li>
-    <li><a href="#">Diziler</a></li>
-    <li><a href="#">Haberler</a></li>
-    <li><a href="#">En İyiler</a></li>
-    <li><a href="#">Hakkımızda</a></li>
+<nav class="navbar navbar-expand-lg ">
+<a class="navbar-brand" href="#">Logo</a>
+<button class="navbar-toggler navbar-toggler-right " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span> </span>
+            <span> </span>
+            <span> </span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Ana Sayfa <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Filmler</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Diziler</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Haberler
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Hakkımızda</a>
+    </li>
   </ul>
+</div>
+</nav>
 
 </div>
 </template>
@@ -39,40 +63,105 @@ export default {
 
 <style scoped>
 
+
+
 #app {
-  position: fixed;
   display: block;
   width: 100%;
-  z-index: 9999;
+  top: 0;
+
 }
+.navbar {
+  background-color: #ffd300;
+}
+
+.navbar-toggler{
+  padding: 10px 5px;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #ffd300;
 }
 
-li,img {
-  float: left;
-  margin: 5px;
-}
 
 
 li a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  display: block;
   color: #231F20;
+  background-color: #ffd300;
   text-align: center;
-  padding: 30px 20px;
+  padding: 20px 10px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
 }
 
-/* Change the link color to #111 (black) on hover */
 
 li a:hover {
   background-color: #FFC107;
 }
+
+
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: 0;
+}
+
+.navbar-toggler span {
+   display: block;
+   background-color: #444;
+   height: 3px;
+   width: 25px;
+   margin-top: 4px;
+   margin-bottom: 4px;
+   -webkit-transform: rotate(0deg);
+   -moz-transform: rotate(0deg);
+   -o-transform: rotate(0deg);
+   transform: rotate(0deg);
+   position: relative;
+   opacity: 1;
+}
+
+.navbar-toggler span:nth-child(1),
+.navbar-toggler span:nth-child(3) {
+   -webkit-transition: transform .35s ease-in-out;
+   -moz-transition: transform .35s ease-in-out;
+   -o-transition: transform .35s ease-in-out;
+   transition: transform .35s ease-in-out;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(1) {
+    position: absolute;
+
+    top: 20px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    opacity: 0.9;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(2) {
+    height: 12px;
+    visibility: hidden;
+    background-color: transparent;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(3) {
+    position: absolute;
+
+    top: 20px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    opacity: 0.9;
+}
+.navbar-toggler {
+     align-self: flex-end;
+}
+
 </style>

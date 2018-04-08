@@ -1,6 +1,7 @@
 <template>
 <div id="app">
-  <carousel :loop="true" :autoplay="true" :autoplayTimeout="4000" :per-page="1" :navigationEnabled="false" :paginationEnabled="false">
+
+  <!--<carousel :loop="true" :autoplay="true" :autoplayTimeout="4000" :per-page="1" :navigationEnabled="false" :paginationEnabled="false">
     <slide>
       <div class="gradient">
         <img src="https://wallpapersite.com/images/pages/pic_w/3852.jpg" alt="">
@@ -27,71 +28,52 @@
       </div>
     </slide>
   </carousel>
+  -->
 
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
 
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
+    <b-carousel  id="carousel1"
+                  style="text-shadow: 1px 1px 2px #333;"
+                  controls
+                  indicators
+                  :interval="4000"
+                  img-height="auto"
+                  v-model="slide"
+                  @sliding-start="onSlideStart"
+                  @sliding-end="onSlideEnd"
+      >
+      <div class="gradient">
+        <!-- Text slides with image -->
+        <b-carousel-slide caption="First slide"
+                          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+                          img-src="https://lorempixel.com/1024/480/technics/2/"
+        ></b-carousel-slide>
 
-  <p>1</p>
-  <p>1</p>
+        <b-carousel-slide caption="First slide"
+                          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+                          img-src="https://lorempixel.com/1024/480/technics/4/"
+        ></b-carousel-slide>
+        <!-- Slides with image only -->
+        <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/8/">
+        </b-carousel-slide>
+        <!-- Slides with custom text -->
+        <!-- Text slides with image -->
+        <b-carousel-slide caption="First slide"
+                          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+                          img-src="https://lorempixel.com/1024/480/technics/2/"
+        ></b-carousel-slide>
 
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
+      </div>
+      </b-carousel>
 
-  <p>1</p>
-  <p>1</p>
 
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
-
-  <p>1</p>
-  <p>1</p>
 
 
 </div>
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
@@ -103,23 +85,17 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  width: 100%;
-  height: 550px;
-  position: relative;
-   display: inline-block;
-}
 
-carousel,
-slide {
-  margin: 0px;
-  padding: 0px;
+
+
+#app {
+  display: block;
+
+
 }
 
 .gradient {
-  width: 100%;
-  height: 550px;
-  display:table;
+
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.55)), color-stop(100%, rgba(0, 0, 0, 0)));
@@ -137,15 +113,23 @@ slide {
 
 }
 
-img {
-  position:absolute;
-  z-index:-1;
-  display:block;
+#carousel1 {
   width: 100%;
-  height: auto;
+  height: 550px;
   overflow: hidden;
+
 }
 
+#carousel1, b-carousel-slide {
+  display:block !important;
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+
+
+  }
+
+/*
 h2{
   font-family: Century Gothic, sans-serif;
 
@@ -162,4 +146,6 @@ h2{
     left: 150px;
     top: 450px;
 }
+
+*/
 </style>
