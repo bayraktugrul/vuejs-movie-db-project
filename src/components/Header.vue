@@ -11,24 +11,51 @@
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
   <ul class="navbar-nav">
     <li class="nav-item active">
-      <a class="nav-link" href="#">Ana Sayfa <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Filmler</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Diziler</a>
+      <router-link class="nav-link" :to="{ path: '/'}" replace>Ana Sayfa</router-link>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Haberler
+        Filmler
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <router-link class="dropdown-item" :to="{ path: '/movies'}" replace>Tümü</router-link>
+        <a class="dropdown-item" href="#">Aksiyon</a>
+        <a class="dropdown-item" href="#">Animasyon</a>
+        <a class="dropdown-item" href="#">Bilim Kurgu</a>
+        <a class="dropdown-item" href="#">Dram</a>
+        <a class="dropdown-item" href="#">Fantastik</a>
+        <a class="dropdown-item" href="#">Gerilim</a>
+        <a class="dropdown-item" href="#">Komedi</a>
+        <a class="dropdown-item" href="#">Korku</a>
+        <a class="dropdown-item" href="#">Macera</a>
+        <a class="dropdown-item" href="#">Psikolojik</a>
+        <a class="dropdown-item" href="#">Romantik</a>
       </div>
     </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Diziler
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Tümü</a>
+        <a class="dropdown-item" href="#">Aksiyon</a>
+        <a class="dropdown-item" href="#">Animasyon</a>
+        <a class="dropdown-item" href="#">Bilim Kurgu</a>
+        <a class="dropdown-item" href="#">Dram</a>
+        <a class="dropdown-item" href="#">Fantastik</a>
+        <a class="dropdown-item" href="#">Gerilim</a>
+        <a class="dropdown-item" href="#">Komedi</a>
+        <a class="dropdown-item" href="#">Korku</a>
+        <a class="dropdown-item" href="#">Macera</a>
+        <a class="dropdown-item" href="#">Psikolojik</a>
+        <a class="dropdown-item" href="#">Romantik</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Haberler</a>
+    </li>
+
     <li class="nav-item">
       <a class="nav-link" href="#">Hakkımızda</a>
     </li>
