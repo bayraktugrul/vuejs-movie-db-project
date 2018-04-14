@@ -19,8 +19,8 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <router-link class="dropdown-item" :to="{ path: '/movies'}" replace>Tümü</router-link>
-        <a class="dropdown-item" href="#">Aksiyon</a>
-        <a class="dropdown-item" href="#">Animasyon</a>
+        <router-link class="dropdown-item" :to="{ name: 'moviesCategory', params: { category_name: 'Aksiyon' }}">Aksiyon</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'moviesCategory', params: { category_name: 'Animasyon' }}">Animasyon</router-link>
         <a class="dropdown-item" href="#">Bilim Kurgu</a>
         <a class="dropdown-item" href="#">Dram</a>
         <a class="dropdown-item" href="#">Fantastik</a>

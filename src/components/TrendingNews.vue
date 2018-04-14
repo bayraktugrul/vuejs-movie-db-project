@@ -164,10 +164,6 @@ export default {
 
 <style scoped>
 
-#app {
-
-  background-color: #ffffff;
-}
 
 .col-md-8 {
     -webkit-box-flex: 0;
@@ -518,4 +514,11 @@ export default {
 	background: #222!important;
 	color: #fff;
 }
+
+#app {
+
+  background-color: #ffffff;
+  
+}
+
 </style>

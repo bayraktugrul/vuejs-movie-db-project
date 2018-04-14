@@ -1,16 +1,21 @@
 <template>
   <div id="app">
       <app-header> </app-header>
-      <p>Kategori {{ $route.params.category_name }}</p>
+      <movie-list></movie-list>
+      <db-footer></db-footer> 
   </div>
 </template>
 
 <script>
 import Header from './Header.vue';
+import MovieList from './MovieList.vue';
+import Footer from './Footer.vue';
 
 export default {
   components: {
-      'app-header' : Header
+      'app-header' : Header,
+      'movie-list' : MovieList,
+      'db-footer': Footer
     }
 
 }
@@ -22,6 +27,9 @@ p {
   color :white;
 }
 
+#app {
+  background-color: #ffffff;
+}
 
 
 </style>
