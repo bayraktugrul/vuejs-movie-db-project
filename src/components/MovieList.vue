@@ -7,74 +7,21 @@
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Filmler</div>
                 </div>
-                <div class="row pb-4">
+                <div  v-for="movie in movies" class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="https://ia.media-imdb.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" alt=""/></div>
+                            <div class="fh5co_news_img"><img :src="movie.movie_photo" alt=""/></div>
                             <div></div>
                         </div>
                     </div>
                     <div class="col-md-7 animate-box">
-                        <a href="single.html" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                        nostrud quis xercitation ullamco. </a> <a href="single.html" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2016 </a>
-                        <div class="fh5co_consectetur"> Amet consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                        <a href="single.html" class="fh5co_magna py-2"> {{movie.movie_name}} </a> <a href="single.html" class="fh5co_mini_time py-3"> IMDB Puanı : {{movie.movie_imdb}} </a>
+                        <div class="fh5co_consectetur">
+                          Film Açıklaması : {{movie.movie_description}}
                         </div>
                     </div>
                 </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="https://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <a href="single.html" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                        nostrud quis xercitation ullamco. </a> <a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2016 </a>
-                        <div class="fh5co_consectetur"> Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore.
-                        </div>
 
-                    </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img">
-                                <img src="https://ia.media-imdb.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,704,1000_AL_.jpg" alt=""/>
-                            </div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <a href="single.html" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                        nostrud quis xercitation ullamco. </a> <a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2016 </a>
-                        <div class="fh5co_consectetur"> Quis nostrud xercitation ullamco laboris nisi aliquip ex ea commodo
-                            consequat.
-                        </div>
-                    </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-5">
-                        <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="https://ia.media-imdb.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,666,1000_AL_.jpg" alt=""/></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <a href="single.html" class="fh5co_magna py-2"> Magna aliqua ut enim ad minim veniam quis
-                        nostrud quis xercitation ullamco. </a> <a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-                        April 18,2016 </a>
-                        <div class="fh5co_consectetur"> Amet consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -100,8 +47,13 @@
   export default {
     data() {
       return {
-
-      };
+            movies: []
+      }
+    },
+  created() {
+      this.$http.get('http://localhost:8888/api/api.php?getMovies').then(function(data) {
+        this.movies = data.body;
+      })
     }
 
   }
@@ -464,6 +416,5 @@
   	background: #222!important;
   	color: #fff;
   }
-
 
   </style>

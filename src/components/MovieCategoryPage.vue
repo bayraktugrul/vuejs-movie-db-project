@@ -2,7 +2,7 @@
   <div id="app">
       <app-header> </app-header>
       <movie-list></movie-list>
-      <db-footer></db-footer> 
+      <db-footer></db-footer>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ import MovieList from './MovieList.vue';
 import Footer from './Footer.vue';
 
 export default {
+  data() {
+    return {
+
+    }
+  },
   components: {
       'app-header' : Header,
       'movie-list' : MovieList,
