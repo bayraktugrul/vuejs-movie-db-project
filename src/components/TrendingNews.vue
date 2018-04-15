@@ -156,7 +156,7 @@ export default {
   data() {
     return {
 
-    };
+    }
   }
 
 }
@@ -518,7 +518,7 @@ export default {
 #app {
 
   background-color: #ffffff;
-  
+
 }
 
 </style>

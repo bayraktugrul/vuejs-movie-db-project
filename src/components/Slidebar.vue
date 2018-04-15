@@ -5,7 +5,8 @@
                   controls
                   indicators
                   :interval="4000"
-                  img-height="auto"
+                  img-width="1024"
+                  img-height="480"
                   v-model="slide"
                   @sliding-start="onSlideStart"
                   @sliding-end="onSlideEnd"
@@ -47,7 +48,7 @@ export default {
   data() {
     return {
 
-    };
+    }
   }
 
 }

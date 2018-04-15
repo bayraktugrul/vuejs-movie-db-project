@@ -28,10 +28,8 @@
         <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
             <div class="col-12 text-center pb-4 pt-4">
                 <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Önceki</a>
-                <a href="#" class="btn_pagging">1</a>
-                <a href="#" class="btn_pagging">2</a>
-                <a href="#" class="btn_pagging">3</a>
-                <a href="#" class="btn_pagging">...</a>
+                <a href="#" v-for="page in totalPages" v-on:click="paging(page)" class="btn_pagging">{{page}}</a>
+
                 <a href="#" class="btn_mange_pagging">Sonraki <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
              </div>
         </div>
@@ -47,13 +45,27 @@
   export default {
     data() {
       return {
-            movies: []
+            movies: [],
+            totalPages: 1
       }
     },
-  created() {
+    methods: {
+      paging: function(page){
+          this.$http.get('http://localhost:8888/api/api.php?getMovies&pageNumber='+page).then(function(data) {
+            this.movies = data.body;
+          });
+
+        }
+    },
+    created() {
       this.$http.get('http://localhost:8888/api/api.php?getMovies').then(function(data) {
         this.movies = data.body;
-      })
+      });
+      this.$http.get('http://localhost:8888/api/api.php?getTotalPageNumber').then(function(data) {
+        console.log(data);
+        this.totalPages = Number(data.body);
+      });
+
     }
 
   }
