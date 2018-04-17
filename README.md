@@ -29,10 +29,11 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-# Project Title:
+## Project Title:
 >  An online database of information related to films, television programs like
 IMDB.com
-# We have following entities and relations:
+
+## We have following entities and relations:
 
 Users (user_id, user_name, user_mail, user_password, user_date, user_last_seen,
 user_photo, user_authority, user_gender, user_birthday) <br>

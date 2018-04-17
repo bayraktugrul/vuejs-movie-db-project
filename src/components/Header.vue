@@ -53,7 +53,7 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Haberler</a>
+      <router-link class="nav-link" :to="{ path: '/news'}" replace>Haberler</router-link>
     </li>
 
     <li class="nav-item">
