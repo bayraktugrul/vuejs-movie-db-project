@@ -47,8 +47,10 @@
 export default {
   data() {
     return {
-
+      
     }
+  }
+
   }
 
 }
@@ -56,12 +58,8 @@ export default {
 
 <style scoped>
 
-
-
 #app {
   display: block;
-
-
 }
 
 .gradient {
