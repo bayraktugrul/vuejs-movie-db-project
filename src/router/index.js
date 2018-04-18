@@ -4,6 +4,11 @@ import HomePage from '@/components/HomePage'
 import MoviePage from '@/components/MoviePage'
 import MovieCategoryPage from '@/components/MovieCategoryPage'
 import NewsPage from '@/components/NewsPage'
+import AboutPage from '@/components/AboutPage'
+import UserLoginPage from '@/components/UserLoginPage'
+import UserRegisterPage from '@/components/UserRegisterPage'
+import AdminLoginPage from '@/components/AdminLoginPage'
+import AdminPanelPage from '@/components/AdminPanelPage'
 
 Vue.use(Router)
 
@@ -14,19 +19,44 @@ export default new Router({
       name: 'home',
       component: HomePage },
     {
-      path: '/movies',
-      name: 'movies',
+      path: '/filmler',
+      name: 'filmler',
       component: MoviePage
     },
     {
-      path: '/movies/:category_name',
-      name: 'moviesCategory',
+      path: '/filmler/:film_kategorisi',
+      name: 'filmKategori',
       component: MovieCategoryPage
     },
     {
-      path: '/news',
-      name: 'news',
+      path: '/haberler',
+      name: 'haberler',
       component: NewsPage
+    },
+    {
+      path: '/hakkimizda',
+      name: 'hakkimizda',
+      component: AboutPage
+    },
+    {
+      path: '/giris',
+      name: 'giris',
+      component: UserLoginPage
+    },
+    {
+      path: '/kayitol',
+      name: 'kayitol',
+      component: UserRegisterPage
+    },
+    {
+      path: '/admingiris',
+      name: 'admingiris',
+      component: AdminLoginPage
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminPanelPage
     }
   ],
   mode: 'history'

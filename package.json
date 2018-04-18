@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.6",
+    "js-md5": "^0.7.3",
     "scss-loader": "0.0.1",
     "vue": "^2.5.2",
     "vue-carousel": "^0.6.11",

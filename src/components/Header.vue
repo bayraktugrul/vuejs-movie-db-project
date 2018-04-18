@@ -18,9 +18,9 @@
         Filmler
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <router-link class="dropdown-item" :to="{ path: '/movies'}" replace>Tümü</router-link>
-        <router-link class="dropdown-item" :to="{ name: 'moviesCategory', params: { category_name: 'Aksiyon' }}">Aksiyon</router-link>
-        <router-link class="dropdown-item" :to="{ name: 'moviesCategory', params: { category_name: 'Animasyon' }}">Animasyon</router-link>
+        <router-link class="dropdown-item" :to="{ path: '/filmler'}" replace>Tümü</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'Aksiyon' }}">Aksiyon</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'Animasyon' }}">Animasyon</router-link>
         <a class="dropdown-item" href="#">Bilim Kurgu</a>
         <a class="dropdown-item" href="#">Dram</a>
         <a class="dropdown-item" href="#">Fantastik</a>
@@ -53,12 +53,23 @@
       </div>
     </li>
     <li class="nav-item">
-      <router-link class="nav-link" :to="{ path: '/news'}" replace>Haberler</router-link>
+      <router-link class="nav-link" :to="{ path: '/haberler'}" replace>Haberler</router-link>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="#">Hakkımızda</a>
+      <router-link class="nav-link" :to="{ path: '/hakkimizda'}" replace>Hakkımızda</router-link>
     </li>
+
+    <li class="nav-item">
+      <router-link class="nav-link" :to="{ path: '/giris'}" replace>Üye Girişi</router-link>
+    </li>
+    <li class="nav-item">
+      <router-link class="nav-link" :to="{ path: '/kayitol'}" replace>Kayıt Ol</router-link>
+    </li>
+    <li class="nav-item">
+      <router-link class="nav-link" :to="{ path: '/admingiris'}" replace>Yönetici Girişi</router-link>
+    </li>
+
   </ul>
 </div>
 </nav>
@@ -67,6 +78,8 @@
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
