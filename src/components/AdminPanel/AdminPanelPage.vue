@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <panel-header></panel-header> 
+  <panel-header></panel-header>
 </div>
 </template>
 
@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 
 

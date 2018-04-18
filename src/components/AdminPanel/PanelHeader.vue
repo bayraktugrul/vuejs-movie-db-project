@@ -11,25 +11,25 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <router-link class="nav-link" :to="{ path: '/'}" replace>Ana Sayfa</router-link>
+        <router-link class="nav-link" :to="{ path: '/admin'}" replace>Ana Sayfa</router-link>
       </li>
 
       <li class="nav-item">
-        <router-link class="nav-link" :to="{ path: '/haberler'}" replace>Film Girişi</router-link>
+        <router-link class="nav-link" :to="{ path: '/filmekle'}" replace>Film Ekle</router-link>
       </li>
 
       <li class="nav-item">
-        <router-link class="nav-link" :to="{ path: '/hakkimizda'}" replace>Dizi Girişi</router-link>
+        <router-link class="nav-link" :to="{ path: '/diziekle'}" replace>Dizi Ekle</router-link>
       </li>
 
       <li class="nav-item">
-        <router-link class="nav-link" :to="{ path: '/giris'}" replace>Haber Girişi</router-link>
+        <router-link class="nav-link" :to="{ path: '/haberekle'}" replace>Haber Ekle</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{ path: '/kayitol'}" replace>Kullanıcıları Yönet</router-link>
+        <router-link class="nav-link" :to="{ path: '/kullanicilariyonet'}" replace>Kullanıcıları Yönet</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" :to="{ path: '/admingiris'}" replace>Çıkış</router-link>
+        <router-link class="nav-link" :to="{ path: '/cikis'}" replace>Çıkış</router-link>
       </li>
 
     </ul>

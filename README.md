@@ -35,29 +35,29 @@ IMDB.com
 
 ## We have following entities and relations:
 
-Users (user_id, user_name, user_mail, user_password, user_date, user_last_seen,
+<b>Users</b> (user_id, user_name, user_mail, user_password, user_date, user_last_seen,
 user_photo, user_authority, user_gender, user_birthday) <br>
-Scenes (scene_id, movies_series_id) <br>
-Movies (movie_id, movie_name, movie_description, movie_trailer, movie_photo,
+<b>Scenes</b> (scene_id, movies_series_id) <br>
+<b>Movies</b> (movie_id, movie_name, movie_description, movie_trailer, movie_photo,
 movie_country, movie_views) <br>
-Series (series_id, series_name, series_description, series_trailer, series_photo,
+<b>Series</b> (series_id, series_name, series_description, series_trailer, series_photo,
 series_country, series_views, series_seasons, series_no_of_episodes) <br>
-Stars (star_id, star_name, star_surname, star_birthday, star_photo) <br>
-Is_rolling (star_id, scene_id, rolling_date) -- &gt; star_id and scene_id are foreign keys <br>
-Directors (director_id, director_name, director_surname, director_birthday, director_photo) <br>
-Directs (director_id, scene_id) -- &gt; director_id and scene_id are foreign keys <br>
-Authors (author_id, author_name, author_surname, author_birthday, author_photo) <br>
-Writes (author_id, scene_id) -- &gt; author_id and scene_id are foreign keys <br>
-Companies (company_id, company_name, company_logo) <br>
-Supports (company_id, scene_id) -- &gt; company_id and scene_id are foreign keys <br>
-Categories (category_id, category_name) <br>
-Has_catagory (category_id, scene_id) -- &gt; category_id and scene_id are foreign keys <br>
-Comments (comment_id, scene_id, user_id, comment_date, comment_description) -- &gt; scene_id and
+<b>Stars</b> (star_id, star_name, star_surname, star_birthday, star_photo) <br>
+<b>Is_rolling</b> (star_id, scene_id, rolling_date) -- &gt; star_id and scene_id are foreign keys <br>
+<b>Directors</b> (director_id, director_name, director_surname, director_birthday, director_photo) <br>
+<b>Directs</b> (director_id, scene_id) -- &gt; director_id and scene_id are foreign keys <br>
+<b>Authors</b> (author_id, author_name, author_surname, author_birthday, author_photo) <br>
+<b>Writes</b> (author_id, scene_id) -- &gt; author_id and scene_id are foreign keys <br>
+<b>Companies</b> (company_id, company_name, company_logo) <br>
+<b>Supports</b> (company_id, scene_id) -- &gt; company_id and scene_id are foreign keys <br>
+<b>Categories</b> (category_id, category_name) <br>
+<b>Has_catagory</b> (category_id, scene_id) -- &gt; category_id and scene_id are foreign keys <br>
+<b>Comments</b> (comment_id, scene_id, user_id, comment_date, comment_description) -- &gt; scene_id and
 user_id are foreign keys <br>
-Favorites (favorites_id, scene_id, user_id) -- &gt; scene_id and user_id are foreign keys <br>
-News (news_id, news_title, news_description, news_views, news_photo, news_date) <br>
-About (about_id, about_description) <br>
-Settings (settings_id, settings_title, settings_desription, settings_keywords, settings_logo,
+<b>Favorites</b> (favorites_id, scene_id, user_id) -- &gt; scene_id and user_id are foreign keys <br>
+<b>News</b> (news_id, news_title, news_description, news_views, news_photo, news_date) <br>
+<b>About</b> (about_id, about_description) <br>
+<b>Settings</b> (settings_id, settings_title, settings_desription, settings_keywords, settings_logo,
 settings_footer, settings_contact) <br>
 
 This database follows all rules of BCNF. Because there are primary keys in each table. <br>

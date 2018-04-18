@@ -1,6 +1,11 @@
 <?php
 require_once("DB.php");
 $db = new DB("localhost", "vuejs-db", "root", "root");
+
+if(isset($_GET['action'])){
+	$action = $_GET['action'];
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
     //-- FILM SAYFASI --
@@ -48,19 +53,30 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
       $where= ($page * $howFar) - $howFar;
       echo json_encode($db->query("SELECT * FROM News ORDER BY news_date DESC LIMIT $where, $howFar"));
     }
+    else if(isset($_GET["getMostViewed5NewsForMoviePage"])) {
+      echo json_encode($db->query("SELECT N.news_title, N.news_photo, N.news_date FROM News N ORDER BY N.news_views DESC LIMIT 5"));
 
+    }
     //----
+
 
 
 
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
+      if($action == 'addNews'){
+        $news_title = $_POST['news_title'];
+        $news_description = $_POST['news_description'];
+        $news_photo = $_POST['news_photo'];
+        $result = $db->query("INSERT INTO `News` (`news_title`, `news_description`, `news_photo`) VALUES ('$news_title', '$news_description', '$news_photo') ");
 
+          	if($result){
+          	   echo json_encode("News added successfully");
+          	} else{
+          		 echo json_encode("Couldn't insert news");
+          	}
 
-
-
-        echo "POST";
-
+          }
 
 } else {
         http_response_code(405);

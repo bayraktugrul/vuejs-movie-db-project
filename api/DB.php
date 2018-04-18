@@ -13,7 +13,9 @@ class DB {
                 if (explode(' ', $query)[0] == 'SELECT') {
                 $data = $statement->fetchAll();
                 return $data;
-                }
+              }else {
+                return $statement;
+              }
         }
 }
 

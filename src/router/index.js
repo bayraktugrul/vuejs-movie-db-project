@@ -8,11 +8,14 @@ import AboutPage from '@/components/AboutPage'
 import UserLoginPage from '@/components/UserLoginPage'
 import UserRegisterPage from '@/components/UserRegisterPage'
 import AdminLoginPage from '@/components/AdminLoginPage'
-import AdminPanelPage from '@/components/AdminPanelPage'
+import AdminPanelPage from '@/components/AdminPanel/AdminPanelPage'
+import AddMoviePage from '@/components/AdminPanel/AddMoviePage'
+import AddNewsPage from '@/components/AdminPanel/AddNewsPage'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -57,7 +60,16 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: AdminPanelPage
+    },
+    {
+      path: '/filmekle',
+      name: 'filmekle',
+      component: AddMoviePage
+    },
+    {
+      path: '/haberekle',
+      name: 'haberekle',
+      component: AddNewsPage
     }
-  ],
-  mode: 'history'
+  ]
 })
