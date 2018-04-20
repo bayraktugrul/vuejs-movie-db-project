@@ -10,14 +10,14 @@
                 <div  v-for="movie in movies" class="row pb-4">
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img :src="movie.movie_photo" alt=""/></div>
+                            <div class="fh5co_news_img"><img :src="movie.scene_photo" alt=""/></div>
                             <div></div>
                         </div>
                     </div>
                     <div class="col-md-7 animate-box">
-                        <a href="single.html" class="fh5co_magna py-2"> {{movie.movie_name}} </a> <a href="single.html" class="fh5co_mini_time py-3"> IMDB Puanı : {{movie.movie_imdb}} </a>
+                        <a href="single.html" class="fh5co_magna py-2"> {{movie.scene_name}} </a> <a href="single.html" class="fh5co_mini_time py-3"> IMDB Puanı : {{movie.movie_imdb}} </a>
                         <div class="fh5co_consectetur">
-                          Film Açıklaması : {{movie.movie_description}}
+                          Film Açıklaması : {{movie.scene_description}}
                         </div>
                     </div>
                 </div>
@@ -47,23 +47,40 @@ export default {
       totalPages: 1
     };
   },
+
+  //component update işlemi olmadığı için route değiştiğinde component update olması için watch eklendi. Buradaki istek created() içindeki ile aynı
+  watch: {
+    '$route.params.film_kategorisi': function (id) {
+      this.$http
+        .get("http://localhost:8888/api/api.php?getMoviesByCategory=" + this.$route.params.film_kategorisi)
+        .then(function(data) {
+          this.movies = data.body;
+        });
+      this.$http
+        .get("http://localhost:8888/api/api.php?getTotalPageNumberByCategory=" + this.$route.params.film_kategorisi)
+        .then(function(data) {
+          console.log(data);
+          this.totalPages = Number(data.body);
+        });
+    }
+  },
   methods: {
     paging: function(page) {
       this.$http
-        .get("http://localhost:8888/api/api.php?getMovies&pageNumber=" + page)
+        .get("http://localhost:8888/api/api.php?getMoviesByCategory="+ this.$route.params.film_kategorisi+"&pageNumber=" + page)
         .then(function(data) {
           this.movies = data.body;
         });
     }
-  },
+  }, 
   created() {
     this.$http
-      .get("http://localhost:8888/api/api.php?getMovies")
+      .get("http://localhost:8888/api/api.php?getMoviesByCategory=" + this.$route.params.film_kategorisi)
       .then(function(data) {
         this.movies = data.body;
       });
     this.$http
-      .get("http://localhost:8888/api/api.php?getTotalPageNumber")
+      .get("http://localhost:8888/api/api.php?getTotalPageNumberByCategory=" + this.$route.params.film_kategorisi)
       .then(function(data) {
         console.log(data);
         this.totalPages = Number(data.body);

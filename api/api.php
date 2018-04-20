@@ -8,7 +8,7 @@ if(isset($_GET['action'])){
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-    //-- FILM SAYFASI --
+    //-- FILM TUMU SAYFASI --
     //Film sayfası için belli sayfadaki filmleri dönüyor. Default olarak 1. sayfadan döner.
     if(isset($_GET["getMovies"])) {
       $page = intval(@$_GET['pageNumber']);
@@ -16,20 +16,61 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
           $page =1;
       }
       $howFar = 2;     //her sayfada kaç film olacak
-      $total_movies = count($db->query("SELECT * FROM Movies ORDER BY movie_imdb DESC"));
+      $total_movies = count($db->query("SELECT * FROM Scenes WHERE scene_type = 'movie' "));
       $total_page = ceil($total_movies / $howFar);
       $where= ($page * $howFar) - $howFar;
-      echo json_encode($db->query("SELECT * FROM Movies ORDER BY movie_imdb DESC LIMIT $where, $howFar"));
+      echo json_encode($db->query("SELECT * FROM Scenes WHERE scene_type = 'movie' ORDER BY scene_rating DESC LIMIT $where, $howFar"));
     }
 
     //Film sayfasındaki alt taraftaki paging özelliği için kaç page olduğu değerini dönüyor
     else if (isset($_GET['getTotalPageNumber'])) {
       $howFar = 2;     //her sayfada kaç film olacak
-      $total_movies = count($db->query("SELECT * FROM Movies ORDER BY movie_imdb DESC"));
+      $total_movies = count($db->query("SELECT * FROM Scenes WHERE scene_type = 'movie' "));
       $total_page = ceil($total_movies / $howFar);
       echo json_encode($total_page);
     }
     //----
+
+		//-- FILM KATEGORI SAYFASI--
+
+		//Kategorilere göre filmleri çekme sorgusu. 3 tablo JOIN işlemi yapılıyor
+		else if (isset($_GET['getMoviesByCategory'])) {
+				$category = $_GET['getMoviesByCategory'];
+				$page = intval(@$_GET['pageNumber']);
+	      if(!$page) {
+	          $page =1;
+	      }
+				$howFar = 2;     //her sayfada kaç film olacak
+	      $total_movies = count($db->query("SELECT *
+					 												   FROM Scenes S, Has_category H, Categories C
+																     WHERE S.scene_id = H.scene_id AND
+																		       C.category_id = H.category_id AND
+																					 C.category_name = '$category' AND
+																					 S.scene_type = 'movie' "));
+				$total_page = ceil($total_movies / $howFar);
+				$where= ($page * $howFar) - $howFar;
+				echo json_encode($db->query("SELECT *
+					 												   FROM Scenes S, Has_category H, Categories C
+																     WHERE S.scene_id = H.scene_id AND
+																		       C.category_id = H.category_id AND
+																					 C.category_name = '$category' AND
+																					 S.scene_type = 'movie'
+																					 ORDER BY S.scene_rating DESC LIMIT $where, $howFar"));
+		}
+		else if (isset($_GET['getTotalPageNumberByCategory'])) {
+			$category = $_GET['getTotalPageNumberByCategory'];
+      $howFar = 2;     //her sayfada kaç film olacak
+      $total_movies = count($db->query("SELECT *
+																	 	  	FROM Scenes S, Has_category H, Categories C
+																	 			WHERE S.scene_id = H.scene_id AND
+																				 C.category_id = H.category_id AND
+																				 C.category_name = '$category' AND
+																				 S.scene_type = 'movie'  "));
+      $total_page = ceil($total_movies / $howFar);
+      echo json_encode($total_page);
+    }
+
+		//----
 
     //--ANA SAYFA--
     //Ana sayfadaki son 5 haber gösterimi için SQL sorgusu
