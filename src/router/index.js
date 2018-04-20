@@ -11,7 +11,7 @@ import AdminLoginPage from '@/components/AdminLoginPage'
 import AdminPanelPage from '@/components/AdminPanel/AdminPanelPage'
 import AddMoviePage from '@/components/AdminPanel/AddMoviePage'
 import AddNewsPage from '@/components/AdminPanel/AddNewsPage'
-
+import MovieDetailsPage from '@/components/MovieDetailsPage'
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +30,11 @@ export default new Router({
       path: '/filmler/:film_kategorisi',
       name: 'filmKategori',
       component: MovieCategoryPage
+    },
+    {
+      path: '/filmler/:film_id/:film_adi',
+      name: 'filmSayfasi',
+      component: MovieDetailsPage
     },
     {
       path: '/haberler',

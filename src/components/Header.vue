@@ -22,14 +22,14 @@
         <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'aksiyon' }}">Aksiyon</router-link>
         <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'animasyon' }}">Animasyon</router-link>
         <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'bilimkurgu' }}">Bilim Kurgu</router-link>
-        <a class="dropdown-item" href="#">Dram</a>
-        <a class="dropdown-item" href="#">Fantastik</a>
-        <a class="dropdown-item" href="#">Gerilim</a>
-        <a class="dropdown-item" href="#">Komedi</a>
-        <a class="dropdown-item" href="#">Korku</a>
-        <a class="dropdown-item" href="#">Macera</a>
-        <a class="dropdown-item" href="#">Psikolojik</a>
-        <a class="dropdown-item" href="#">Romantik</a>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'dram' }}">Dram</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'fantastik' }}">Fantastik</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'gerilim' }}">Gerilim</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'komedi' }}">Komedi</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'korku' }}">Korku</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'macera' }}">Macera</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'psikolojik' }}">Psikolojik</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'filmKategori', params: { film_kategorisi: 'romantik' }}">Romantik</router-link>
       </div>
     </li>
 

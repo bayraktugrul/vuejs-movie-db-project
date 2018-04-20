@@ -10,12 +10,14 @@
               <div  v-for="movie in movies" class="row pb-4">
                   <div class="col-md-5">
                       <div class="fh5co_hover_news_img">
+                          <router-link :to="{ name: 'filmSayfasi', params: { film_id: movie.scene_id, film_adi: seo(movie.scene_name)  }}">
                           <div class="fh5co_news_img"><img :src="movie.scene_photo" alt=""/></div>
+                          </router-link>
                           <div></div>
                       </div>
                   </div>
                   <div class="col-md-7 animate-box">
-                      <a href="single.html" class="fh5co_magna py-2"> {{movie.scene_name}} </a> <a href="single.html" class="fh5co_mini_time py-3"> IMDB Puanı : {{movie.movie_imdb}} </a>
+                      <a href="single.html" class="fh5co_magna py-2"> {{movie.scene_name}} </a> <a href="single.html" class="fh5co_mini_time py-3"> IMDB Puanı : {{movie.scene_rating}} </a>
                       <div class="fh5co_consectetur">
                         Film Açıklaması : {{movie.scene_description}}
                       </div>
@@ -54,6 +56,19 @@ methods: {
       .then(function(data) {
         this.movies = data.body;
       });
+  },
+  seo: function(value) {
+    value = value.replace(/^\s+|\s+$/g, ''); // trim
+    value = value.toLowerCase();
+    var from = "ãàáäâẽèéëêìíıïîõòóöôùúüûñçş·/_,:;";
+    var to   = "aaaaaeeeeeiiiiiooooouuuuncs------";
+    for (var i=0, l=from.length ; i<l ; i++) {
+      value = value.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+    value = value.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+     .replace(/\s+/g, '-') // collapse whitespace and replace by -
+     .replace(/-+/g, '-'); // collapse dashes
+     return value;
   }
 },
 created() {
