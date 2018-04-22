@@ -59,7 +59,7 @@ This database follows all rules of BCNF. Because there are primary keys in each 
 <b>2. Scenes:</b> scene_id ---> movies_series_id. (scene_id is a primary key, so there is an uniquely identifer)<br>
 <b>3. Stars:</b> star_id ---> star_name, star_surname, star_birthday, star_photo. (star_id is a primary key, so there is an uniquely identifer)<br>
 <b>4. Is_rolling:</b> star_id, scene_id ---> rolling_date. (star_id, scene_id are primary keys together, so there is an uniquely identifer)<br>
-<b>5. Directors:</b> director_id ---> director_name, director_surname, director_birthday, director_photo. (director_id is a primary key, so there is an uniquely identifer)<br> 
+<b>5. Directors:</b> director_id ---> director_name, director_surname, director_birthday, director_photo. (director_id is a primary key, so there is an uniquely identifer)<br>
 <b>6. Authors:</b> author_id ---> author_name, author_surname, author_birthday, author_photo. (author_id is a primary key, so there is an uniquely identifer)<br>
 <b>7. Companies:</b> company_id ---> company_name, company_logo. (company_id is a primary key, so there is an uniquely identifer)<br>
 <b>8. Categories:</b> category_id ---> category_name. (category_id is a primary key, so there is an uniquely identifer)<br>
@@ -83,3 +83,6 @@ This database follows all rules of BCNF. Because there are primary keys in each 
 ¬	Every user has favorites and comments as many as they want. Every comment and favorite must belong to only one user.
 
 ¬	Every scene has some comments and favorites. Each comment and favorite must belong to only one scene.
+<br>
+<br>
+![dbms_project](https://user-images.githubusercontent.com/16494485/39100137-cd6f4010-468d-11e8-8301-842ab5da4592.jpg)
