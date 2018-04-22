@@ -4,33 +4,31 @@
   					<div class="col-md-9 reviews-grids">
   						<div class="review">
   							<div class="movie-pic">
-  								<a href="single.html"><img src="http://via.placeholder.com/150x350" alt="" /></a>
+  								<img :src="moviedata[0].scene_photo" alt="" />
   							</div>
   							<div class="review-info">
-  								<a class="span" href="single.html">Lorem  <i>Movie Review</i></a>
-  								<p class="dirctr"><a href="">Reagan Gavin Rasquinha, </a>TNN, Mar 12, 2015, 12.47PM IST</p>
-  								<p class="ratingview">Critic's Rating:</p>
+  								<a class="span" >{{moviedata[0].scene_name}}</a>
+  								<p class="dirctr"></p>
+  								<p class="ratingview">IMDB Puanı : </p>
 
   								<p class="ratingview">
-  								&nbsp;3.5/5
+  								&nbsp;{{moviedata[0].scene_rating}}/10
   								</p>
   								<div class="clearfix"></div>
-  								<p class="ratingview c-rating">Avg Readers' Rating:</p>
 
-  								<p class="ratingview c-rating">
-  								&nbsp; 3.3/5</p>
   								<div class="clearfix"></div>
   								<div class="yrw">
-  									
+
   									<div class="wt text-center">
-  										<a href="#">WATCH THIS TRAILER</a>
+  										<a :href="moviedata[0].scene_trailer" target="_blank">FRAGMANI İZLE</a>
   									</div>
   									<div class="clearfix"></div>
   								</div>
-  								<p class="info">CAST:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Will Smith, Margot Robbie, Adrian Martinez, Rodrigo Santoro, BD Wong, Robert Taylor</p>
-  								<p class="info">DIRECTION: &nbsp;&nbsp;&nbsp;&nbsp;Glenn Ficarra, John Requa</p>
-  								<p class="info">GENRE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Crime</p>
-  								<p class="info">DURATION:&nbsp;&nbsp;&nbsp; &nbsp; 1 hour 45 minutes</p>
+  								<p class="info"> <b>Ülke : </b> &nbsp; &nbsp;{{moviedata[0].scene_country}}</p>
+                  <p> <b>Kategoriler: </b>  <span v-for="category in categories">{{category.category_name}},  </span></p>
+
+
+  								<p > <b>Film Açıklaması :</b>&nbsp;&nbsp;&nbsp; &nbsp; {{moviedata[0].scene_description}}</p>
   							</div>
   							<div class="clearfix"></div>
   						</div>
@@ -47,8 +45,31 @@
 export default {
   data() {
     return {
-
+      authors: [],
+      directors: [],
+      companies: [],
+      stars: [],
+      categories: [],
+      moviedata: []
     }
+  },
+  created() {
+    this.$http
+      .get("http://localhost:8888/api/api.php?getMovieDetailPage=" + this.$route.params.film_id )
+      .then(function(data) {
+          this.moviedata = data.body;
+      });
+    this.$http
+      .get("http://localhost:8888/api/api.php?getMovieDetailPageCategories=" + this.$route.params.film_id )
+      .then(function(data) {
+          this.categories = data.body;
+      });
+    this.$http
+      .get("http://localhost:8888/api/api.php?getMovieDetailPageStars=" + this.$route.params.film_id )
+      .then(function(data) {
+          this.stars = data.body;
+      });
+
   }
 
 }
