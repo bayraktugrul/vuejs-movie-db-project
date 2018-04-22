@@ -13,6 +13,7 @@ import AddMoviePage from '@/components/AdminPanel/AddMoviePage'
 import AddNewsPage from '@/components/AdminPanel/AddNewsPage'
 import MovieDetailsPage from '@/components/MovieDetailsPage'
 import AddSeriesPage from '@/components/AdminPanel/AddSeriesPage'
+import OtherTablesPage from '@/components/AdminPanel/OtherTablesPage'
 
 Vue.use(Router)
 
@@ -82,6 +83,11 @@ export default new Router({
       path: '/haberekle',
       name: 'haberekle',
       component: AddNewsPage
+    },
+    {
+      path: '/digertablolar',
+      name: 'digertablolar',
+      component: OtherTablesPage
     }
   ]
 })

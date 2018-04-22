@@ -25,6 +25,11 @@
       <li class="nav-item">
         <router-link class="nav-link" :to="{ path: '/haberekle'}" replace>Haber Ekle</router-link>
       </li>
+
+      <li class="nav-item">
+        <router-link class="nav-link" :to="{ path: '/digertablolar'}" replace>Diğer Tablolar</router-link>
+      </li>
+ 
       <li class="nav-item">
         <router-link class="nav-link" :to="{ path: '/kullanicilariyonet'}" replace>Kullanıcıları Yönet</router-link>
       </li>
