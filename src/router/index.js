@@ -12,6 +12,8 @@ import AdminPanelPage from '@/components/AdminPanel/AdminPanelPage'
 import AddMoviePage from '@/components/AdminPanel/AddMoviePage'
 import AddNewsPage from '@/components/AdminPanel/AddNewsPage'
 import MovieDetailsPage from '@/components/MovieDetailsPage'
+import AddSeriesPage from '@/components/AdminPanel/AddSeriesPage'
+
 Vue.use(Router)
 
 export default new Router({
@@ -70,6 +72,11 @@ export default new Router({
       path: '/filmekle',
       name: 'filmekle',
       component: AddMoviePage
+    },
+    {
+      path: '/diziekle',
+      name: 'diziekle',
+      component: AddSeriesPage
     },
     {
       path: '/haberekle',
