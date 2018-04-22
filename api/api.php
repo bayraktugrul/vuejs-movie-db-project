@@ -100,6 +100,48 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     }
     //----
 
+		//-FILM DETAY SAYFASI---
+		else if(isset($_GET['getMovieDetailPage'])) {
+				$movie_id = $_GET['getMovieDetailPage'];
+
+				echo json_encode($db->query("SELECT S.scene_name, S.scene_photo, S.scene_rating, S.scene_trailer, S.scene_country, S.scene_description FROM Scenes S WHERE S.scene_id = '$movie_id' "));
+		}
+
+		else if(isset($_GET['getMovieDetailPageCategories'])) {
+				$movie_id = $_GET['getMovieDetailPageCategories'];
+
+				echo json_encode($db->query("SELECT C.category_name
+																		 	  	FROM Scenes S, Has_category H, Categories C
+																		 			WHERE S.scene_id = H.scene_id AND
+																					 C.category_id = H.category_id AND
+																					 S.scene_id = '$movie_id'"));
+		}
+		else if(isset($_GET['getMovieDetailPageStars'])) {
+				$movie_id = $_GET['getMovieDetailPageStars'];
+				echo json_encode($db->query("SELECT S.star_name, S.star_surname
+																		 	  	FROM Scenes Sc, Is_rolling I, Stars S
+																		 			WHERE Sc.scene_id = I.scene_id AND
+																					 I.star_id = S.star_id AND
+																					 Sc.scene_id = '$movie_id'"));
+		}
+		else if(isset($_GET['getMovieDetailPageCompanies'])) {
+				$movie_id = $_GET['getMovieDetailPageCompanies'];
+				echo json_encode($db->query("SELECT C.company_name
+																					FROM Scenes Sc, Supports S, Companies C
+																					WHERE Sc.scene_id = S.scene_id AND
+																					 S.company_id = C.company_id AND
+																					 Sc.scene_id = '$movie_id'"));
+		}
+		else if(isset($_GET['getMovieDetailPageDirectors'])) {
+				$movie_id = $_GET['getMovieDetailPageDirectors'];
+				echo json_encode($db->query("SELECT Do.director_name, Do.director_surname
+																					FROM Scenes Sc, Directors Do, Directs D
+																					WHERE Sc.scene_id = D.scene_id AND
+																					 D.director_id = Do.director_id AND
+																					 Sc.scene_id = '$movie_id'"));
+		}
+		//-----
+
 
 
 

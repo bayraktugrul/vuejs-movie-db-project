@@ -26,8 +26,9 @@
   								</div>
   								<p class="info"> <b>Ülke : </b> &nbsp; &nbsp;{{moviedata[0].scene_country}}</p>
                   <p> <b>Kategoriler: </b>  <span v-for="category in categories">{{category.category_name}},  </span></p>
-
-
+                  <p> <b>Yönetmen: </b>  <span v-for="director in directors">{{director.director_name}} {{director.director_surname}},  </span></p>
+                  <p> <b>Oyuncular: </b>  <span v-for="star in stars">{{star.star_name}} {{star.star_surname}} ,  </span></p>
+                  <p> <b>Destekleyen Firmalar: </b>  <span v-for="company in companies">{{company.company_name}},  </span></p>
   								<p > <b>Film Açıklaması :</b>&nbsp;&nbsp;&nbsp; &nbsp; {{moviedata[0].scene_description}}</p>
   							</div>
   							<div class="clearfix"></div>
@@ -68,6 +69,16 @@ export default {
       .get("http://localhost:8888/api/api.php?getMovieDetailPageStars=" + this.$route.params.film_id )
       .then(function(data) {
           this.stars = data.body;
+      });
+    this.$http
+      .get("http://localhost:8888/api/api.php?getMovieDetailPageCompanies=" + this.$route.params.film_id )
+      .then(function(data) {
+          this.companies = data.body;
+      });
+    this.$http
+      .get("http://localhost:8888/api/api.php?getMovieDetailPageDirectors=" + this.$route.params.film_id )
+      .then(function(data) {
+          this.directors = data.body;
       });
 
   }
