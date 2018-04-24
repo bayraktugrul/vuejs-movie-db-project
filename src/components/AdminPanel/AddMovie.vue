@@ -31,6 +31,14 @@
       <input v-model="movieData.scene_country"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
     </div>
 
+    <div class="form-group">
+    <label>Yazarlar</label>
+    <div v-for="getAuthor in getAuthors">
+    <input type="checkbox" :id="getAuthor.author_id" :value="getAuthor.author_id" v-model="movieData.authorArray">
+    <label>{{getAuthor.author_name}}</label>
+    </div>
+    </div>
+
     <button v-on:click="save()" class="btn btn-primary">Film Ekle</button>
   </form>
 
@@ -52,8 +60,12 @@ export default {
         scene_rating: '',
         scene_country: '',
         scene_views: '1',
-        scene_type: 'movie'
-       }
+        scene_type: 'movie',
+
+        authorArray : []
+      },
+
+      getAuthors : []
     }
   },
   methods: {
@@ -66,6 +78,14 @@ export default {
             });
 
         }
+    },
+    created() {
+      this.$http
+        .get("http://localhost:8888/api/api.php?getAuthorsForAddingScenes")
+        .then(function(data) {
+          this.getAuthors = data.body;
+        });
+
     }
 
 }
