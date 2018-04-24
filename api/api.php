@@ -142,9 +142,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 		}
 		//-----
 
-
-
-
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
       if($action == 'addNews'){
@@ -160,6 +157,78 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
           	}
 
           }
+				else if($action == 'addStar'){
+		        $star_name = $_POST['star_name'];
+		        $star_surname = $_POST['star_surname'];
+		        $star_photo = $_POST['star_photo'];
+		        $result = $db->query("INSERT INTO `Stars` (`star_name`, `star_surname`, `star_photo`) VALUES ('$star_name', '$star_surname', '$star_photo') ");
+
+		          	if($result){
+		          	   echo json_encode("Star added successfully");
+		          	} else{
+		          		 echo json_encode("Couldn't insert news");
+		          	}
+
+		          }
+				else if($action == 'addCompany'){
+		        $company_name = $_POST['company_name'];
+		        $company_logo = $_POST['company_logo'];
+		        $result = $db->query("INSERT INTO `Companies` (`company_name`, `company_logo`) VALUES ('$company_name', '$company_logo') ");
+
+		          	if($result){
+		          	   echo json_encode("Company added successfully");
+		          	} else{
+		          		 echo json_encode("Couldn't insert news");
+		          	}
+
+		          }
+				else if($action == 'addDirector'){
+		        $director_name = $_POST['director_name'];
+		        $director_surname = $_POST['director_surname'];
+						$director_photo = $_POST['director_photo'];
+		        $result = $db->query("INSERT INTO `Directors` (`director_name`, `director_surname`, `director_photo` ) VALUES ('$director_name', '$director_surname', '$director_photo') ");
+
+		          	if($result){
+		          	   echo json_encode("Director added successfully");
+		          	} else{
+		          		 echo json_encode("Couldn't insert news");
+		          	}
+
+		          }
+				else if($action == 'addAuthor'){
+					$author_name = $_POST['author_name'];
+					$author_surname = $_POST['author_surname'];
+					$author_photo = $_POST['author_photo'];
+		      $result = $db->query("INSERT INTO `Authors` (`author_name`, `author_surname`, `author_photo` ) VALUES ('$author_name', '$author_surname', '$author_photo') ");
+
+		          	if($result){
+		          	   echo json_encode("Author added successfully");
+		          	} else{
+		          		 echo json_encode("Couldn't insert news");
+		          	}
+
+		          }
+				else if($action == 'addMovie'){
+
+
+					$scene_name = $_POST['scene_name'];
+					$scene_description = $_POST['scene_description'];
+					$scene_trailer = $_POST['scene_trailer'];
+					$scene_photo = $_POST['scene_photo'];
+					$scene_rating = $_POST['scene_rating'];
+					$scene_country = $_POST['scene_country'];
+					$scene_views = $_POST['scene_views'];
+					$scene_type = $_POST['scene_type'];
+
+		      $scene_id = $db->query("INSERT INTO `Scenes` (`scene_name`, `scene_description`, `scene_trailer`, `scene_photo`,`scene_rating`,`scene_country`,`scene_views`,`scene_type` )
+					    VALUES ('$scene_name', '$scene_description', '$scene_trailer', '$scene_photo', '$scene_rating', '$scene_country', '$scene_views', '$scene_type') ");
+
+
+
+					$result = $db->query("INSERT INTO `Writes` (`author_id`, `scene_id`) VALUES ('3', '$scene_id') ");
+
+		          }
+
 
 
 

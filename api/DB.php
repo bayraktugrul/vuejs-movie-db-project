@@ -13,10 +13,17 @@ class DB {
                 if (explode(' ', $query)[0] == 'SELECT') {
                 $data = $statement->fetchAll();
                 return $data;
-              }else {
+                }else if(explode(' ', $query)[0] == 'INSERT'){
+                    $LAST_ID = $this->pdo->lastInsertId();
+                    return $LAST_ID;
+                }else {
                 return $statement;
               }
         }
+
+
+
+
 }
 
 ?>

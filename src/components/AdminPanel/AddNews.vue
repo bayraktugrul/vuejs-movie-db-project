@@ -17,7 +17,7 @@
     </div>
     <button v-on:click="save()" type="submit" class="btn btn-primary">Haber Ekle</button>
   </form>
- 
+
 </div>
 </template>
 
