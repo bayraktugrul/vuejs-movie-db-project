@@ -142,6 +142,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 		}
 		//-----
 
+		//Film - Dizi ekleme sayfasında yazarları seçmek için
+		else if(isset($_GET['getAuthorsForAddingScenes'])) {
+				echo json_encode($db->query("SELECT A.author_id, A.author_name, A.author_surname FROM Authors A "));
+		}
+
+
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
       if($action == 'addNews'){
@@ -208,6 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 		          	}
 
 		          }
+
 				else if($action == 'addMovie'){
 
 
@@ -223,11 +230,19 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 		      $scene_id = $db->query("INSERT INTO `Scenes` (`scene_name`, `scene_description`, `scene_trailer`, `scene_photo`,`scene_rating`,`scene_country`,`scene_views`,`scene_type` )
 					    VALUES ('$scene_name', '$scene_description', '$scene_trailer', '$scene_photo', '$scene_rating', '$scene_country', '$scene_views', '$scene_type') ");
 
+					$author_id_array = $_POST['authorArray'];
+
+					foreach ($author_id_array as $author_id) {
+						$result = $db->query("INSERT INTO `Writes` (`author_id`, `scene_id`) VALUES ('$author_id', '$scene_id') ");
+					}
 
 
-					$result = $db->query("INSERT INTO `Writes` (`author_id`, `scene_id`) VALUES ('3', '$scene_id') ");
+
+
 
 		          }
+
+
 
 
 
