@@ -30,9 +30,24 @@
                   <p> <b>Yönetmen: </b>  <span v-for="director in directors">{{director.director_name}} {{director.director_surname}},  </span></p>
                   <p> <b>Oyuncular: </b>  <span v-for="star in stars">{{star.star_name}} {{star.star_surname}} ,  </span></p>
                   <p> <b>Destekleyen Firmalar: </b>  <span v-for="company in companies">{{company.company_name}},  </span></p>
-  								<p > <b>Film Açıklaması :</b>&nbsp;&nbsp;&nbsp; &nbsp; {{moviedata[0].scene_description}}</p>
+  								<p > <b>Dizi Açıklaması :</b>&nbsp;&nbsp;&nbsp; &nbsp; {{moviedata[0].scene_description}}</p>
   							</div>
   							<div class="clearfix"></div>
+
+                <form v-if="this.$parent.$parent.authenticated">
+                  <div class="form-group">
+                    <b><label for="exampleTextarea">Yorum</label></b>
+                    <textarea v-model="commentData.comment_description" class="form-control" id="exampleTextarea" rows="5"></textarea>
+                  </div>
+                  <button type="button" v-on:click="addComment()" class="btn btn-primary">Yorum Ekle</button>
+                </form>
+
+                <br>
+                <div v-for="comment in commentsArray" class="alert alert-info" >
+                    <strong>{{comment.user_name}}</strong> {{comment.comment_description}}
+                </div>
+
+
   						</div>
   		  </div>
   			</div>
@@ -49,8 +64,36 @@ export default {
       companies: [],
       stars: [],
       categories: [],
-      moviedata: []
+      moviedata: [],
+
+      commentData : {
+        user_id: '',
+        scene_id : '',
+        comment_description : ''
+      },
+
+      commentsArray : []
     }
+  },
+  methods: {
+        addComment: function() {
+          this.commentData.user_id = this.$parent.$parent.mockAccount[0].user_id;
+          this.commentData.scene_id = this.$route.params.dizi_id;
+
+          var data = this.commentData;
+          this.$http.post('http://localhost:8888/api/api.php?action=addComment', data, {emulateJSON: true}).then(function(response) {
+              console.log('Success!:', response.message);
+          }, function (response) {
+              console.log('Error!:', response.data);
+          });
+
+          this.$http
+              .get("http://localhost:8888/api/api.php?getSceneDetailPageComments=" + this.$route.params.dizi_id )
+              .then(function(data) {
+                  this.commentsArray = data.body;
+              });
+
+        }
   },
   created() {
     this.$http
@@ -78,7 +121,11 @@ export default {
       .then(function(data) {
           this.directors = data.body;
       });
-
+    this.$http
+        .get("http://localhost:8888/api/api.php?getSceneDetailPageComments=" + this.$route.params.dizi_id )
+        .then(function(data) {
+            this.commentsArray = data.body;
+        });
   }
 
 }

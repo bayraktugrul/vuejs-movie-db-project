@@ -41,6 +41,11 @@
                   <button type="button" v-on:click="addComment()" class="btn btn-primary">Yorum Ekle</button>
                 </form>
 
+                <br>
+                <div v-for="comment in commentsArray" class="alert alert-info" >
+                    <strong>{{comment.user_name}}</strong> {{comment.comment_description}}
+                </div>
+
   						</div>
   		  </div>
   			</div>
@@ -63,7 +68,9 @@ export default {
         user_id: '',
         scene_id : '',
         comment_description : ''
-      }
+      },
+
+      commentsArray : []
 
 
     }
@@ -79,7 +86,13 @@ export default {
           }, function (response) {
               console.log('Error!:', response.data);
           });
-            
+
+          this.$http
+              .get("http://localhost:8888/api/api.php?getSceneDetailPageComments=" + this.$route.params.film_id )
+              .then(function(data) {
+                  this.commentsArray = data.body;
+              });
+
         }
   },
   created() {
@@ -108,6 +121,12 @@ export default {
       .then(function(data) {
           this.directors = data.body;
       });
+
+    this.$http
+        .get("http://localhost:8888/api/api.php?getSceneDetailPageComments=" + this.$route.params.film_id )
+        .then(function(data) {
+            this.commentsArray = data.body;
+        });
 
   }
 
