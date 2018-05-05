@@ -13,18 +13,18 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail adresinizi giriniz" v-model.trim="email" required>
+                <input type="text" name="email" placeholder="Kullanıcı adınızı giriniz" v-model="input.user_name" required>
               </div>
             </div>
 
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Parolanızı giriniz" v-model.trim="password" required>
+                <input type="password" name="password" placeholder="Parolanızı giriniz" v-model="input.user_password" required>
               </div>
             </div>
 
-            <div class="ui fluid large orange  button" @click.prevent="login" :class="{'loading': isLoading}">Giriş</div>
+            <div class="ui fluid large orange  button" @click="login">Giriş</div>
           </div>
 
           <div class="ui error message" v-if="hasErrors">
@@ -43,13 +43,14 @@
 </template>
 <script>
 export default {
-  name: "register",
   data() {
     return {
-      email: "",
-      password: "",
       errors: [],
-      isLoading: false
+      isLoading: false,
+      input: {
+                    user_name: "",
+                    user_password: ""
+                } 
     };
   },
   computed: {
@@ -59,21 +60,18 @@ export default {
   },
   methods: {
     login() {
-      this.errors = [];
-      if (this.isFormValid) {
-        this.isLoading = true;
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(this.email, this.password)
-          .then(user => {
-            this.$store.dispatch("setUser", user);
-            this.$router.push("/");
-          })
-          .catch(error => {
-            this.errors.push(error.message);
-            this.isLoading = false;
-          });
-      }
+        if(this.input.username != "" && this.input.password != "") {
+                this.$http
+                .get("http://localhost:8888/api/api.php?checkUser&user_name="+this.input.user_name)
+                .then(function(data) {
+                  console.log(data);
+                  this.$parent.mockAccount = data.body;
+                });
+
+                this.$emit("authenticated", true);
+                this.$router.replace({ name: "home" });
+
+              }
     },
     isEmpty() {
       return this.email.length === 0 || this.password.length === 0;

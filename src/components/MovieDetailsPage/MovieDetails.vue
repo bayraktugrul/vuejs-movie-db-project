@@ -32,6 +32,15 @@
   								<p > <b>Film Açıklaması :</b>&nbsp;&nbsp;&nbsp; &nbsp; {{moviedata[0].scene_description}}</p>
   							</div>
   							<div class="clearfix"></div>
+
+                <form v-if="this.$parent.$parent.authenticated">
+                  <div class="form-group">
+                    <b><label for="exampleTextarea">Yorum</label></b>
+                    <textarea v-model="commentData.comment_description" class="form-control" id="exampleTextarea" rows="5"></textarea>
+                  </div>
+                  <button type="button" v-on:click="addComment()" class="btn btn-primary">Yorum Ekle</button>
+                </form>
+
   						</div>
   		  </div>
   			</div>
@@ -48,8 +57,30 @@ export default {
       companies: [],
       stars: [],
       categories: [],
-      moviedata: []
+      moviedata: [],
+
+      commentData : {
+        user_id: '',
+        scene_id : '',
+        comment_description : ''
+      }
+
+
     }
+  },
+  methods: {
+        addComment: function() {
+          this.commentData.user_id = this.$parent.$parent.mockAccount[0].user_id;
+          this.commentData.scene_id = this.$route.params.film_id;
+
+          var data = this.commentData;
+          this.$http.post('http://localhost:8888/api/api.php?action=addComment', data, {emulateJSON: true}).then(function(response) {
+              console.log('Success!:', response.message);
+          }, function (response) {
+              console.log('Error!:', response.data);
+          });
+            
+        }
   },
   created() {
     this.$http

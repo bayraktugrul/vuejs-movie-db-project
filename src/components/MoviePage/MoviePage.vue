@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from './Header.vue';
+import Header from '../Header.vue';
 import MovieAllList from './MovieAllList.vue';
 
 export default {

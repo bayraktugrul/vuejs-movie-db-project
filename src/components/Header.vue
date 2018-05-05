@@ -38,18 +38,18 @@
         Diziler
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">Tümü</a>
-        <a class="dropdown-item" href="#">Aksiyon</a>
-        <a class="dropdown-item" href="#">Animasyon</a>
-        <a class="dropdown-item" href="#">Bilim Kurgu</a>
-        <a class="dropdown-item" href="#">Dram</a>
-        <a class="dropdown-item" href="#">Fantastik</a>
-        <a class="dropdown-item" href="#">Gerilim</a>
-        <a class="dropdown-item" href="#">Komedi</a>
-        <a class="dropdown-item" href="#">Korku</a>
-        <a class="dropdown-item" href="#">Macera</a>
-        <a class="dropdown-item" href="#">Psikolojik</a>
-        <a class="dropdown-item" href="#">Romantik</a>
+        <router-link class="dropdown-item" :to="{ path: '/diziler'}" replace>Tümü</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'aksiyon' }}">Aksiyon</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'animasyon' }}">Animasyon</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'bilimkurgu' }}">Bilim Kurgu</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'dram' }}">Dram</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'fantastik' }}">Fantastik</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'gerilim' }}">Gerilim</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'komedi' }}">Komedi</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'korku' }}">Korku</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'macera' }}">Macera</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'psikolojik' }}">Psikolojik</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'diziKategori', params: { dizi_kategorisi: 'romantik' }}">Romantik</router-link>
       </div>
     </li>
     <li class="nav-item">
@@ -70,6 +70,12 @@
       <router-link class="nav-link" :to="{ path: '/admingiris'}" replace>Yönetici Girişi</router-link>
     </li>
 
+    <li class="nav-item">
+      <router-link class="nav-link" v-if="this.$parent.$parent.authenticated" to="/" v-on:click.native="logout()" replace>Çıkış Yap</router-link>
+    </li>
+
+
+
   </ul>
 </div>
 </nav>
@@ -85,6 +91,16 @@ export default {
     return {
 
     }
+  },
+  methods: {
+      setAuthenticated(status) {
+          this.authenticated = status;
+      },
+      logout() {
+          this.$parent.$parent.authenticated = false;
+          this.$parent.$parent.mockAccount[0].user_name = "",
+          this.$parent.$parent.mockAccount[0].user_password = ""
+      }
   }
 
 }

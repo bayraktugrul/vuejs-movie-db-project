@@ -1,12 +1,30 @@
 <template>
 <div id="app">
-  <router-view/>
+  <router-view @authenticated="setAuthenticated" />
 </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+        data() {
+            return {
+                authenticated: false,
+                mockAccount: {
+                    user_id : "",
+                    user_name: "",
+                    user_password: ""
+                } 
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        }
 }
 </script>
 

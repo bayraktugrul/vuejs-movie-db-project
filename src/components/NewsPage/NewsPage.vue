@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Header from "./Header.vue";
+import Header from "../Header.vue";
 import NewsList from "./NewsList.vue";
 export default {
   data() {

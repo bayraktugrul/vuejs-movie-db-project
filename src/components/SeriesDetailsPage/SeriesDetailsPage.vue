@@ -1,15 +1,15 @@
 <template>
   <div id="app">
       <app-header> </app-header>
-      <movie-details></movie-details>
+      <series-details></series-details>
       <db-footer></db-footer>
   </div>
 </template>
 
 <script>
-import Header from './Header.vue';
-import MovieDetails from './MovieDetails.vue';
-import Footer from './Footer.vue';
+import Header from '../Header.vue';
+import SeriesDetails from './SeriesDetails.vue';
+import Footer from '../Footer.vue';
 
 export default {
   data() {
@@ -19,7 +19,7 @@ export default {
   },
   components: {
       'app-header' : Header,
-      'movie-details' : MovieDetails,
+      'series-details' : SeriesDetails,
       'db-footer': Footer
     }
 
