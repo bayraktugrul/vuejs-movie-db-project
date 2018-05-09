@@ -54,7 +54,7 @@ Scenes (scene_id, scene_name,scene_description,scene_trailer,scene_photo,scene_r
 <b>Settings</b> (settings_id, settings_title, settings_desription, settings_keywords, settings_logo, settings_footer, settings_contact)<br>
 
 
-This database follows all rules of BCNF. Because there are primary keys in each table.
+This database follows all rules of BCNF. Because there are primary keys in each table. <br>
 <b>1. Users:</b> user_id --->  user_name, user_mail, user_password, user_date, user_last_seen, user_photo, user_authority, user_gender, user_birthday. (user_id is a primary key, so there is an uniquely identifer)<br>
 <b>2. Scenes:</b> scene_id ---> movies_series_id. (scene_id is a primary key, so there is an uniquely identifer)<br>
 <b>3. Stars:</b> star_id ---> star_name, star_surname, star_birthday, star_photo. (star_id is a primary key, so there is an uniquely identifer)<br>
@@ -86,3 +86,45 @@ This database follows all rules of BCNF. Because there are primary keys in each 
 <br>
 <br>
 ![dbms_project](https://user-images.githubusercontent.com/16494485/39100137-cd6f4010-468d-11e8-8301-842ab5da4592.jpg)
+
+<br>
+<br>
+
+
+![ekran resmi 2018-05-09 15 28 17](https://user-images.githubusercontent.com/16494485/39814698-0542be28-539e-11e8-963e-4fab996af470.png)
+
+
+<br>
+<br>
+<br>
+
+![ekran resmi 2018-05-09 15 28 36](https://user-images.githubusercontent.com/16494485/39814718-1d469f76-539e-11e8-806f-05a05a35281f.png)
+
+
+<br>
+<br>
+<br>
+
+![ekran resmi 2018-05-09 15 28 52](https://user-images.githubusercontent.com/16494485/39814738-30ba5ebc-539e-11e8-877e-8470e64b9c1a.png)
+
+
+<br>
+<br>
+<br>
+
+![ekran resmi 2018-05-09 15 29 10](https://user-images.githubusercontent.com/16494485/39814754-3d53868a-539e-11e8-8439-b4436318708d.png)
+
+<br>
+<br>
+<br>
+
+![ekran resmi 2018-05-09 15 29 59](https://user-images.githubusercontent.com/16494485/39814779-5359f5d6-539e-11e8-830f-ecec940133ff.png)
+
+<br>
+
+
+
+
+
+
+
